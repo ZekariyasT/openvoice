@@ -2,16 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend:wght@400;700&display=swap');
+
 :root {
   --background: #020617;
   --foreground: #f8fafc;
   --accent: #38bdf8;
+
+  /* Accessibility Variables */
+  --font-size: 16px;
+  --font-weight: 400;
+  --letter-spacing: normal;
+  --font-family-base: 'Inter', sans-serif;
+}
+
+[data-dyslexic="true"] {
+  --font-family-base: 'OpenDyslexic', sans-serif;
+}
+
+[data-high-contrast="true"] {
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent: #ffff00;
+  /* High contrast yellow */
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  letter-spacing: var(--letter-spacing);
+  transition: background-color 0.3s ease, color 0.3s ease, font-size 0.2s ease;
   overflow-x: hidden;
 }
 
@@ -25,7 +48,7 @@ body {
   .glass {
     @apply bg-white bg-opacity-5 backdrop-blur-md border border-white border-opacity-10;
   }
-  
+
   .text-balance {
     text-wrap: balance;
   }
